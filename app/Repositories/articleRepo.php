@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Article;
 
-class ArticleRepo
+class ArticleRepo implements ArticleRepoInterface
 {
     protected Article $model;
 
@@ -23,16 +23,16 @@ class ArticleRepo
         return $this->model->findOrFail($id);
     }
 
-    public function create(array $article)
+    public function create(array $data)
     {
-        return $this->model->create($article);
+        return $this->model->create($data);
     }
 
-    public function update(int $id, array $article)
+    public function update(int $id, array $data)
     {
-        $data = $this->find($id);       // ganti nama variabel biar tidak bentrok
-        $data->update($article);        // update pakai $article (data baru dari user)
-        return $data;
+        $article = $this->find($id);
+        $article->update($data);
+        return $article;
     }
 
     public function delete(int $id)

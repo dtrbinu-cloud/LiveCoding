@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\ArticleRepo;
+use App\Repositories\ArticleRepoInterface;
 
 class ArticleService
 {
-    protected ArticleRepo $articleRepo;
+    protected ArticleRepoInterface $articleRepo;
 
-    public function __construct(ArticleRepo $articleRepo)
+    public function __construct(ArticleRepoInterface $articleRepo)
     {
         $this->articleRepo = $articleRepo;
     }
